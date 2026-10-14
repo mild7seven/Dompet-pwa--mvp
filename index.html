@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dompet PWA - MVP</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen pb-12">
+    <header class="bg-indigo-700 text-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold">DompetPWA MVP</h1>
+            <span id="active-cycle-badge" class="bg-indigo-800 text-xs px-3 py-1 rounded-full font-medium">Memuat Siklus...</span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 mt-6 space-y-6">
+        <!-- Summary Card -->
+        <section class="bg-white p-6 rounded-xl shadow-sm border">
+            <p class="text-xs text-slate-500 font-semibold uppercase">Estimasi THP Bersih</p>
+            <h2 id="summary-thp" class="text-3xl font-bold text-indigo-600 mt-1">Rp 0</h2>
+        </section>
+
+        <!-- Calculator Form -->
+        <section class="bg-white p-6 rounded-xl shadow-sm border">
+            <h3 class="text-lg font-bold mb-4 border-b pb-2">Kalkulator Gaji & Absensi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Dana Tambahan (Rp)</label>
+                    <input type="number" id="extra-funds" value="1000000" class="w-full border rounded-lg px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Hari Kerja Efektif</label>
+                    <input type="number" id="work-days" value="22" class="w-full border rounded-lg px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Hari Unpaid Leave</label>
+                    <input type="number" id="unpaid-leave-days" value="0" class="w-full border rounded-lg px-3 py-2">
+                </div>
+                <div class="flex items-end">
+                    <button id="calc-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition">Hitung & Simpan</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transfer Module -->
+        <section class="bg-white p-6 rounded-xl shadow-sm border">
+            <h3 class="text-lg font-bold mb-4 border-b pb-2">Simulator Transfer Bank</h3>
+            <form id="transfer-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Bank Tujuan</label>
+                    <select id="bank-dest" class="w-full border rounded-lg px-3 py-2">
+                        <option value="BCA_ISTRI">Bank BCA (Istri) - Rp 0</option>
+                        <option value="MANDIRI">Bank Mandiri (BI-FAST Rp 2.500)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Nominal (Rp)</label>
+                    <input type="number" id="transfer-nominal" placeholder="2850000" class="w-full border rounded-lg px-3 py-2">
+                </div>
+                <button type="submit" class="w-full bg-slate-800 hover:bg-slate-900 text-white py-2 rounded-lg">Proses Transfer</button>
+                <div id="transfer-result" class="text-xs bg-slate-50 p-3 rounded-lg border hidden"></div>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/db.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
